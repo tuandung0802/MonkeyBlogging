@@ -1,5 +1,9 @@
 import { Route, Routes } from "react-router-dom";
+import DashboardLayout from "./components/module/dashboard/DashboardLayout";
+import PostAddNew from "./components/module/post/PostAddNew";
+import PostManage from "./components/module/post/PostManage";
 import { AuthProvider } from "./contexts/auth-context";
+import DashboardPage from "./pages/DashboardPage";
 import HomePage from "./pages/HomePage";
 import NotFoundPage from "./pages/NotFoundPage";
 import PostDetailsPage from "./pages/PostDetailsPage";
@@ -19,6 +23,20 @@ function App() {
             path="/:slug"
             element={<PostDetailsPage></PostDetailsPage>}
           ></Route>
+          <Route element={<DashboardLayout></DashboardLayout>}>
+            <Route
+              path="/dashboard"
+              element={<DashboardPage></DashboardPage>}
+            ></Route>
+            <Route
+              path="/manage/add-post"
+              element={<PostAddNew></PostAddNew>}
+            ></Route>
+            <Route
+              path="/manage/post"
+              element={<PostManage></PostManage>}
+            ></Route>
+          </Route>
         </Routes>
       </AuthProvider>
     </div>
