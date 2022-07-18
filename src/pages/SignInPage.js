@@ -15,8 +15,9 @@ import IconEyeClose from "../icon/IconEyeClose";
 import IconEyeOpen from "../icon/IconEyeOpen.js";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase/firebase-config.js";
+import InputPasswordToggle from "../components/input/InputPasswordToggle.js";
 const schema = yup.object({
-  fullname: yup.string().required("Quốc Anh dâm quá"),
+  fullname: yup.string().required("Please enter your name"),
   email: yup
     .string()
     .email("Please enter valid email")
@@ -52,7 +53,7 @@ const SignInPage = () => {
   const navigate = useNavigate();
   useEffect(() => {
     document.title = "Login Page";
-    if (userInfo?.email) navigate("/");
+    // if (userInfo?.email) navigate("/");
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userInfo]);
   const handleSignIn = async (values) => {
@@ -83,23 +84,7 @@ const SignInPage = () => {
           <Label className="label" htmlFor="password">
             Password
           </Label>
-          <Input
-            type={togglePassword ? "text" : "password"}
-            name="password"
-            placeholder="Enter your password"
-            control={control}
-            className="input"
-          >
-            {!togglePassword ? (
-              <IconEyeClose
-                onClick={() => setTogglePassword(true)}
-              ></IconEyeClose>
-            ) : (
-              <IconEyeOpen
-                onClick={() => setTogglePassword(false)}
-              ></IconEyeOpen>
-            )}
-          </Input>
+          <InputPasswordToggle control={control}></InputPasswordToggle>
         </Field>
         You haven't have an account? <NavLink to={"/sign-up"}> Sign-up</NavLink>
         <Button
