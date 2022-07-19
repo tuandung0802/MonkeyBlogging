@@ -9,10 +9,10 @@ function AuthProvider(props) {
   const value = { userInfo, setUserInfo };
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
-      console.log(
-        "🚀 ~ file: auth-context.js ~ line 12 ~ onAuthStateChanged ~ user",
-        user
-      );
+      // console.log(
+      //   "🚀 ~ file: auth-context.js ~ line 12 ~ onAuthStateChanged ~ user",
+      //   user
+      // );
       setUserInfo(user);
     });
   }, []);
